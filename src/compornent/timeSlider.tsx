@@ -21,7 +21,7 @@ const handleChange = (newValue:number[]) => {
 
   return(
     <>
-    <div className="relative m-auto flex w-[50%] flex-col items-center">
+    <div className="relative m-auto flex w-[50%] flex-col items-center -bottom-100">
       <SliderPrimitive.Root
         className="relative flex w-full touch-none select-none items-center"
         defaultValue={slideTime}

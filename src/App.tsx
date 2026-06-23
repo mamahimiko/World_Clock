@@ -1,33 +1,27 @@
 "use client"
 import './App.css'
 import { useState } from 'react'
-import Clock from './compornent/clock'
+import ClockContainer from './compornent/clockContainer'
 import TimeSlider from './compornent/timeSlider'
 
 function App() {
 
   const initDate = new Date()
-  const initTime:number = (initDate.getHours() * 60) + initDate.getMinutes()
-  console.log(initDate)
-  console.log(initTime)
+  const initTimeInMinutes:number = (initDate.getHours() * 60) + initDate.getMinutes()
   
-  const [date, setDate] = useState(initDate);
-  const currentTime: [number,number] = [date.getHours(), date.getMinutes()];
+  const [timeInMinutes, setTimeInMinutes] = useState(initTimeInMinutes);
 
-  const [h, m] = currentTime
-  const degHour = h * (360 / 12) + m * (360 / 12 /60);
-  const degMinutes = m * (360 / 60)
+  const degHour = ((timeInMinutes % 720) / 2)
+  const degMinutes = ((timeInMinutes % 60) * 6)
 
-  const currentMinutes = (60 * h) + m
   const handleTimeChange = (time: number) => {
-    console.log(time)
+    setTimeInMinutes(time)
   }
-  
 
   return (
-    <div >
-      <Clock hour={degHour} minutes={degMinutes}/>
-      <TimeSlider initSlideTime={currentMinutes} onChange={handleTimeChange} />
+    <div className='h-screen'>
+      <ClockContainer hour={degHour} minutes={degMinutes} timeInMinutes={timeInMinutes}/>
+      <TimeSlider initSlideTime={timeInMinutes} onChange={handleTimeChange} />
     </div>
   )
 }
