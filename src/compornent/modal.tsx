@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus, FaCheck } from "react-icons/fa6";
 import { continentals, getAllCountriesName } from "@/utils/time";
 import {
   Dialog,
@@ -23,6 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { CheckIcon } from "lucide-react";
 
 type ModalProps = {
   displayedCity: string[];
@@ -51,7 +52,7 @@ const Modal = ({ displayedCity, setDisplayedCity }: ModalProps) => {
 
   return (
     <div>
-      <div className="flex flex-row-reverse py-4 px-6 text-4xl">
+      <div className="flex flex-row-reverse text-4xl">
         <Dialog>
           <form>
             <DialogTrigger asChild>
@@ -94,10 +95,15 @@ const Modal = ({ displayedCity, setDisplayedCity }: ModalProps) => {
                       <SelectGroup>
                         <SelectLabel>City</SelectLabel>
                         {citiesArray.map((city, index) => (
-                          <SelectItem key={index} value={city}>
+                          <SelectItem
+                            key={index}
+                            value={city}
+                            disabled={displayedCity?.includes(city)}
+                          >
                             {city
                               .substring(city.indexOf("/") + 1)
                               .replace(/_/g, " ")}
+                            {displayedCity?.includes(city) ? <CheckIcon /> : ""}
                           </SelectItem>
                         ))}
                       </SelectGroup>
