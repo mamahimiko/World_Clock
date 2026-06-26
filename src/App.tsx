@@ -17,16 +17,37 @@ function App() {
     zone: "utc",
   }).setZone(currentTimeZone);
 
+  const cityCurrentTime = (city: string): number => {
+    const timeZoneData = DateTime.fromMillis(utcTimeStamp, {
+      zone: "utc",
+    }).setZone(city);
+    const timeZoneOffset: number = timeZoneData.offset;
+
+    const cityTimeStamp = utcTimeStamp + timeZoneOffset * 60 * 1000;
+    const dayMinutes = 60 * 24;
+    const timeZoneInMinutes = Math.floor(
+      (cityTimeStamp / (60 * 1000)) % dayMinutes,
+    );
+
+    return timeZoneInMinutes;
+  };
+
   const initTimeInMinutes: number =
     currentTImeZoneTime.hour * 60 + currentTImeZoneTime.minute;
 
   const [timeInMinutes, setTimeInMinutes] = useState(initTimeInMinutes);
 
-  const degHour = (timeInMinutes % 720) / 2;
-  const degMinutes = (timeInMinutes % 60) * 6;
+  const clockArm = (city: string) => {
+    const degHour = (cityCurrentTime(city) % 720) / 2;
+    const degMinutes = (cityCurrentTime(city) % 60) * 6;
+    const hourAndMinute = [degHour, degMinutes];
+    return hourAndMinute;
+  };
 
   const handleTimeChange = (time: number) => {
-    setTimeInMinutes(time);
+    const currentMinutes = cityCurrentTime(currentTimeZone);
+    const diff = time - currentMinutes;
+    setUtcTimeStamp((prev) => prev + diff * 60 * 1000);
   };
 
   return (
@@ -46,16 +67,18 @@ function App() {
           {displayedCity.map((city, index) => (
             <ClockContainer
               key={index}
-              hour={degHour}
-              minutes={degMinutes}
-              timeInMinutes={timeInMinutes}
+              clockArm={clockArm(city)}
+              timeInMinutes={cityCurrentTime(city)}
               city={city}
               displayedCity={displayedCity}
               setDisplayedCity={setDisplayedCity}
             />
           ))}
         </div>
-        <TimeSlider initSlideTime={timeInMinutes} onChange={handleTimeChange} />
+        <TimeSlider
+          value={cityCurrentTime(currentTimeZone)}
+          onChange={handleTimeChange}
+        />
       </main>
     </div>
   );

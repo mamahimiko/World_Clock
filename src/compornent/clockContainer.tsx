@@ -3,8 +3,7 @@ import { calTimeFromMinutes, currentTimeZone } from "@/utils/time";
 import { RxCross2 } from "react-icons/rx";
 
 type clockContainerProps = {
-  hour: number;
-  minutes: number;
+  clockArm: number[];
   timeInMinutes: number;
   city: string;
   displayedCity: string[];
@@ -12,8 +11,7 @@ type clockContainerProps = {
 };
 
 const ClockContainer = ({
-  hour,
-  minutes,
+  clockArm,
   timeInMinutes,
   city,
   displayedCity,
@@ -42,7 +40,7 @@ const ClockContainer = ({
       <div className="">
         <p className="text-4xl">{city.substring(city.indexOf("/") + 1)}</p>
       </div>
-      <Clock hour={hour} minutes={minutes} />
+      <Clock clockArm={clockArm} />
       <div className="">
         <p className="text-5xl">{Time}</p>
       </div>

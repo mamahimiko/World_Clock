@@ -3,18 +3,16 @@ import { Badge } from "@/components/ui/badge.tsx";
 import { useState } from "react";
 
 type TimeSliderProps = {
-  initSlideTime: number;
+  value: number;
   onChange: (value: number) => void;
 };
 
-const TimeSlider = ({ initSlideTime, onChange }: TimeSliderProps) => {
+const TimeSlider = ({ value, onChange }: TimeSliderProps) => {
   const minutesOfDay = 1440;
-  const [slideTime, setSlideTime] = useState<number[]>([initSlideTime]);
-  const hours = Math.floor(slideTime[0] / 60);
-  const minutes = slideTime[0] % 60;
+  const hours = Math.floor(value / 60);
+  const minutes = value % 60;
 
   const handleChange = (newValue: number[]) => {
-    setSlideTime(newValue);
     onChange?.(newValue[0]);
   };
 
@@ -23,7 +21,7 @@ const TimeSlider = ({ initSlideTime, onChange }: TimeSliderProps) => {
       <div className="relative m-auto flex w-[50%] flex-col items-center -bottom-50">
         <SliderPrimitive.Root
           className="relative flex w-full touch-none select-none items-center"
-          defaultValue={slideTime}
+          value={[value]}
           max={minutesOfDay}
           onValueChange={handleChange}
           step={1}

@@ -1,5 +1,4 @@
 import ct from "countries-and-timezones";
-import { DateTime } from "luxon";
 
 export const calTimeFromMinutes = (minutes: number) => {
   const h = Math.floor(minutes / 60);
@@ -9,7 +8,6 @@ export const calTimeFromMinutes = (minutes: number) => {
 };
 
 export const currentTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone; // europa/sweden
-const currentTimeZoneTime = DateTime.now().setZone(currentTimeZone);
 
 const currentZoneUtcTime = ct.getTimezone(currentTimeZone);
 console.log(currentZoneUtcTime);
