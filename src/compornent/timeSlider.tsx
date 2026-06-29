@@ -32,9 +32,14 @@ const TimeSlider = ({ value, onChange, displayedCity }: TimeSliderProps) => {
     <>
       <div
         className={`absolute m-auto flex w-[50%] flex-col items-center bottom-[40%] left-[-20%] md:left-[25%] md:bottom-[-0.5%] xl:bottom-40 z-30
-          ${displayedCity.length === 3 ? "md:bottom-[-2.5%] lg:bottom-[1%] xl:bottom-40" : "xl:bottom-40"}
-          ${displayedCity.length === 4 ? "md:bottom-[-1.5%] lg:bottom-[-0.5%] xl:bottom-[-0.5%]" : "xl:bottom-40"}
-          `}
+            ${
+              isMobile
+                ? "fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md"
+                : "absolute bottom-[40%] left-[-20%]"
+            }
+            ${displayedCity.length === 3 ? "md:bottom-[-2.5%] lg:bottom-[1%] xl:bottom-40" : "xl:bottom-40"}
+            ${displayedCity.length === 4 ? "md:bottom-[-1.5%] lg:bottom-[-0.5%] xl:bottom-[-0.5%]" : "xl:bottom-40"}
+            `}
       >
         <SliderPrimitive.Root
           className={`relative flex w-full touch-none select-none items-center 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaPlus, FaCheck } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa6";
 import { continentals, getAllCountriesName } from "@/utils/time";
 import {
   Dialog,
