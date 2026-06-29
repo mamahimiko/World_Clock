@@ -56,7 +56,7 @@ const Modal = ({ displayedCity, setDisplayedCity }: ModalProps) => {
         <Dialog>
           <form>
             <DialogTrigger asChild>
-              <FaPlus />
+              <FaPlus className="text-white cursor-pointer" />
             </DialogTrigger>
             <DialogContent className="sm:max-w-sm">
               <DialogHeader>

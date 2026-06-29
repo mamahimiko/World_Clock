@@ -89,23 +89,23 @@ const ClockContainer = ({
           color: `rgb(${textColor.r}, ${textColor.g}, ${textColor.b})`,
         }}
       >
-        {city !== currentTimeZone ? (
-          <div className="absolute top-4 right-4 text-2xl h-1 p-2">
-            <RxCross2 onClick={handleClose} className="text-2xl" />
-          </div>
-        ) : (
-          <div className="w-8" />
-        )}
-
         <div
-          className={`flex flex-col gap-14 p-4 text-center w-full overflow-hidden max-h-200 mt-14 items-center
-        ${displayedCity.length === 1 && "mt-14"}
-        ${displayedCity.length === 2 && "items-center lg:gap-14 lg:mt-14"}
-        ${displayedCity.length === 3 && "gap-14 items-center"}
+          className={`flex flex-col gap-14 p-4 text-center w-full overflow-hidden max-h-200 mt-15 items-center
+        ${displayedCity.length === 1 && "mt-30"}
+        ${displayedCity.length === 2 && "items-center lg:gap-14 lg:mt-30"}
+        ${displayedCity.length === 3 && "gap-14 items-center xl:mt-30"}
         ${displayedCity.length === 4 && "xl:max-w-200"}`}
         >
-          <p className="text-4xl ">{city.substring(city.indexOf("/") + 1)}</p>
-
+          <div className="flex">
+            <p className="text-4xl ">{city.substring(city.indexOf("/") + 1)}</p>
+            {city !== currentTimeZone ? (
+              <div className="absolute top-18 right-4 text-2xl h-1 p-2">
+                <RxCross2 onClick={handleClose} className="text-2xl" />
+              </div>
+            ) : (
+              <div className="" />
+            )}
+          </div>
           <Clock clockArm={clockArm} displayedCity={displayedCity} />
           <div className="">
             <p className="text-5xl">{Time}</p>

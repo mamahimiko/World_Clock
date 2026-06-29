@@ -7,8 +7,8 @@ type headerProps = {
 
 const Header = ({ displayedCity, setDisplayedCity }: headerProps) => {
   return (
-    <div>
-      <div className="flex flex-row-reverse py-4 px-6 xl:py-6 xl:px-8 text-4xl">
+    <div className="bg-white/5 backdrop-blur-xl">
+      <div className="flex flex-row-reverse py-4 px-6 xl:px-8 text-4xl">
         <Modal
           displayedCity={displayedCity}
           setDisplayedCity={setDisplayedCity}

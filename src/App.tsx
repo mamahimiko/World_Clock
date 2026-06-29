@@ -42,12 +42,14 @@ function App() {
   };
 
   return (
-    <div className="h-screen">
-      <Header
-        displayedCity={displayedCity}
-        setDisplayedCity={setDisplayedCity}
-      />
-      <main className="bg-amber-100">
+    <div className="relative min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-black">
+      <div className="absolute top-0 left-0 right-0 z-50">
+        <Header
+          displayedCity={displayedCity}
+          setDisplayedCity={setDisplayedCity}
+        />
+      </div>
+      <main className="">
         <div
           className={`flex flex-col h-full
         ${displayedCity.length === 1 && ""}
