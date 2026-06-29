@@ -13,10 +13,6 @@ function App() {
     currentTimeZone,
   ]);
 
-  const currentTImeZoneTime = DateTime.fromMillis(utcTimeStamp, {
-    zone: "utc",
-  }).setZone(currentTimeZone);
-
   const cityCurrentTime = (city: string): number => {
     const timeZoneData = DateTime.fromMillis(utcTimeStamp, {
       zone: "utc",
@@ -31,11 +27,6 @@ function App() {
 
     return timeZoneInMinutes;
   };
-
-  const initTimeInMinutes: number =
-    currentTImeZoneTime.hour * 60 + currentTImeZoneTime.minute;
-
-  const [timeInMinutes, setTimeInMinutes] = useState(initTimeInMinutes);
 
   const clockArm = (city: string) => {
     const degHour = (cityCurrentTime(city) % 720) / 2;
@@ -56,13 +47,13 @@ function App() {
         displayedCity={displayedCity}
         setDisplayedCity={setDisplayedCity}
       />
-      <main>
+      <main className="bg-amber-100">
         <div
-          className={`flex flex-col
+          className={`flex flex-col h-full
         ${displayedCity.length === 1 && ""}
-        ${displayedCity.length === 2 && "lg:flex-row"}
-        ${displayedCity.length === 3 && "md:grid grid-cols-2 [&>div:first-child]:col-span-2 xl:flex xl:flex-row"}
-        ${displayedCity.length === 4 && "md:grid grid-cols-2"}`}
+        ${displayedCity.length === 2 && "h-screen lg:flex-row"}
+        ${displayedCity.length === 3 && "md:grid grid-cols-2 [&>div:first-child]:col-span-2 md:h-screen xl:h-screen xl:flex xl:flex-row"}
+        ${displayedCity.length === 4 && "md:h-screen md:grid grid-cols-2"}`}
         >
           {displayedCity.map((city, index) => (
             <ClockContainer
@@ -78,6 +69,7 @@ function App() {
         <TimeSlider
           value={cityCurrentTime(currentTimeZone)}
           onChange={handleTimeChange}
+          displayedCity={displayedCity}
         />
       </main>
     </div>

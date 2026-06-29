@@ -1,13 +1,14 @@
 import { Slider as SliderPrimitive } from "radix-ui";
 import { Badge } from "@/components/ui/badge.tsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type TimeSliderProps = {
   value: number;
   onChange: (value: number) => void;
+  displayedCity: string[];
 };
 
-const TimeSlider = ({ value, onChange }: TimeSliderProps) => {
+const TimeSlider = ({ value, onChange, displayedCity }: TimeSliderProps) => {
   const minutesOfDay = 1440;
   const hours = Math.floor(value / 60);
   const minutes = value % 60;
@@ -16,17 +17,38 @@ const TimeSlider = ({ value, onChange }: TimeSliderProps) => {
     onChange?.(newValue[0]);
   };
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width:764px)");
+    const update = () => setIsMobile(mediaQuery.matches);
+    update();
+
+    mediaQuery.addEventListener("change", update);
+
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
   return (
     <>
-      <div className="relative m-auto flex w-[50%] flex-col items-center -bottom-50">
+      <div
+        className={`absolute m-auto flex w-[50%] flex-col items-center bottom-[40%] left-[-20%] md:left-[25%] md:bottom-[-0.5%] xl:bottom-40 z-30
+          ${displayedCity.length === 3 ? "md:bottom-[-2.5%] lg:bottom-[1%] xl:bottom-40" : "xl:bottom-40"}
+          ${displayedCity.length === 4 ? "md:bottom-[-1.5%] lg:bottom-[-0.5%] xl:bottom-[-0.5%]" : "xl:bottom-40"}
+          `}
+      >
         <SliderPrimitive.Root
-          className="relative flex w-full touch-none select-none items-center"
+          className={`relative flex w-full touch-none select-none items-center 
+    ${isMobile ? "h-64 w-10 flex-col" : "w-full h-10"}`}
           value={[value]}
           max={minutesOfDay}
           onValueChange={handleChange}
+          orientation={isMobile ? "vertical" : "horizontal"}
           step={1}
         >
-          <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20">
+          <SliderPrimitive.Track
+            className={`relative grow overflow-hidden rounded-full bg-primary/20 
+              ${isMobile ? "w-1.5 h-full" : "h-1.5 w-full"}`}
+          >
             <SliderPrimitive.Range className="absolute h-full bg-primary" />
           </SliderPrimitive.Track>
 
