@@ -40,7 +40,7 @@ const TimeSlider = ({ value, onChange, displayedCity }: TimeSliderProps) => {
             ${displayedCity.length === 1 ? "md:bottom-[15%] xl:bottom-40" : ""}
             ${displayedCity.length === 2 ? "md:bottom-[15%] lg:bottom-[0.5%] xl:bottom-40" : ""}
             ${displayedCity.length === 3 ? "md:bottom-[1.5%] lg:bottom-[0.5%] xl:bottom-40" : ""}
-            ${displayedCity.length === 4 ? "md:bottom-[-1.5%] lg:bottom-[-0.5%] xl:bottom-[-0.5%]" : ""}
+            ${displayedCity.length === 4 ? "md:bottom-[1.5%] lg:bottom-[0.2%] xl:bottom-[0.5%]" : ""}
             `}
       >
         <SliderPrimitive.Root

@@ -93,8 +93,8 @@ const ClockContainer = ({
           className={`flex flex-col p-4 text-center w-full overflow-hidden max-h-200 mt-15 items-center
         ${displayedCity.length === 1 && "gap-14 mt-30"}
         ${displayedCity.length === 2 && "gap-14 items-center lg:mt-30"}
-        ${displayedCity.length === 3 && "gap-14 items-center xl:mt-30 md:gap-8"}
-        ${displayedCity.length === 4 && "gap-10 xl:max-w-200"}`}
+        ${displayedCity.length === 3 && "gap-8 items-center xl:mt-30"}
+        ${displayedCity.length === 4 && "gap-6 xl:max-w-200"}`}
         >
           <div className="flex">
             <div className="w-70 h-20">

@@ -6,6 +6,7 @@ import ClockContainer from "./compornent/clockContainer";
 import TimeSlider from "./compornent/timeSlider";
 import { currentTimeZone } from "./utils/time";
 import { DateTime } from "luxon";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa6";
 
 function App() {
   const [utcTimeStamp, setUtcTimeStamp] = useState(() => Date.now());
@@ -82,7 +83,19 @@ function App() {
         </main>
       </div>
       <footer className="bg-black text-white p-2 text-center">
-        <p>&copy;Maho Kurauchi</p>
+        <div className=" flex justify-center">
+          <p>&copy;Maho Kurauchi</p>
+          <a
+            target="_blank"
+            href="https://github.com/mamahimiko/World_Clock.git"
+            className="px-4"
+          >
+            <FaGithub />
+          </a>
+          <a target="_blank" href="https://www.linkedin.com/in/maho-kurauchi">
+            <FaLinkedinIn />
+          </a>
+        </div>
       </footer>
     </>
   );
