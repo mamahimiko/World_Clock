@@ -41,19 +41,24 @@ function App() {
     setUtcTimeStamp((prev) => prev + diff * 60 * 1000);
   };
 
+  const handleNow = () => {
+    setUtcTimeStamp(Date.now());
+  };
+
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-black">
       <div className="absolute top-0 left-0 right-0 z-50">
         <Header
           displayedCity={displayedCity}
           setDisplayedCity={setDisplayedCity}
+          handleNow={handleNow}
         />
       </div>
       <main className="">
         <div
           className={`flex flex-col h-full
         ${displayedCity.length === 1 && ""}
-        ${displayedCity.length === 2 && "h-screen lg:flex-row"}
+        ${displayedCity.length === 2 && "lg:flex-row"}
         ${displayedCity.length === 3 && "md:grid grid-cols-2 [&>div:first-child]:col-span-2 md:h-screen xl:h-screen xl:flex xl:flex-row"}
         ${displayedCity.length === 4 && "md:h-screen md:grid grid-cols-2"}`}
         >

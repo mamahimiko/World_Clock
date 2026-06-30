@@ -55,9 +55,9 @@ const ClockContainer = ({
 
   return (
     <div
-      className={`relative flex flex-col w-full overflow-hidden bg-slate-950
-        ${displayedCity.length === 1 && "h-screen"}
-        ${displayedCity.length === 2 && "h-1/2 lg:h-screen"}
+      className={`relative flex flex-col w-full min-h-150 overflow-hidden bg-slate-950
+        ${displayedCity.length === 1 && "h-screen "}
+        ${displayedCity.length === 2 && "h-full lg:h-screen"}
         ${displayedCity.length === 3 && ""}
         ${displayedCity.length === 4 && "md:gap-4 md:items-center"}`}
     >
@@ -90,14 +90,18 @@ const ClockContainer = ({
         }}
       >
         <div
-          className={`flex flex-col gap-14 p-4 text-center w-full overflow-hidden max-h-200 mt-15 items-center
-        ${displayedCity.length === 1 && "mt-30"}
-        ${displayedCity.length === 2 && "items-center lg:gap-14 lg:mt-30"}
+          className={`flex flex-col p-4 text-center w-full overflow-hidden max-h-200 mt-15 items-center
+        ${displayedCity.length === 1 && "gap-14 mt-30"}
+        ${displayedCity.length === 2 && "gap-14 items-center lg:mt-30"}
         ${displayedCity.length === 3 && "gap-14 items-center xl:mt-30"}
-        ${displayedCity.length === 4 && "xl:max-w-200"}`}
+        ${displayedCity.length === 4 && "gap-10 xl:max-w-200"}`}
         >
           <div className="flex">
-            <p className="text-4xl ">{city.substring(city.indexOf("/") + 1)}</p>
+            <div className="w-70 h-20">
+              <p className="text-4xl wrap-break-word ">
+                {city.substring(city.indexOf("/") + 1).replaceAll("_", " ")}
+              </p>
+            </div>
             {city !== currentTimeZone ? (
               <div className="absolute top-18 right-4 text-2xl h-1 p-2">
                 <RxCross2 onClick={handleClose} className="text-2xl" />

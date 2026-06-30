@@ -31,14 +31,16 @@ const TimeSlider = ({ value, onChange, displayedCity }: TimeSliderProps) => {
   return (
     <>
       <div
-        className={`absolute m-auto flex w-[50%] flex-col items-center bottom-[40%] left-[-20%] md:left-[25%] md:bottom-[-0.5%] xl:bottom-40 z-30
+        className={`
             ${
               isMobile
-                ? "fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md "
-                : "absolute bottom-[40%] left-[-20%]"
+                ? "fixed bottom-50 left-[8%] -translate-x-1/2 w-[92%] max-w-md z-30 flex flex-col items-center"
+                : "absolute bottom-[40%] left-[25%] w-[50%] z-30 flex flex-col items-center"
             }
-            ${displayedCity.length === 3 ? "md:bottom-[1.5%] lg:bottom-[0.5%] xl:bottom-40" : "xl:bottom-40"}
-            ${displayedCity.length === 4 ? "md:bottom-[-1.5%] lg:bottom-[-0.5%] xl:bottom-[-0.5%]" : "xl:bottom-40"}
+            ${displayedCity.length === 1 ? "md:bottom-[15%] xl:bottom-40" : ""}
+            ${displayedCity.length === 2 ? "md:bottom-[15%] lg:bottom-[0.5%] xl:bottom-40" : ""}
+            ${displayedCity.length === 3 ? "md:bottom-[1.5%] lg:bottom-[0.5%] xl:bottom-40" : ""}
+            ${displayedCity.length === 4 ? "md:bottom-[-1.5%] lg:bottom-[-0.5%] xl:bottom-[-0.5%]" : ""}
             `}
       >
         <SliderPrimitive.Root

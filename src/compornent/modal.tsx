@@ -47,6 +47,7 @@ const Modal = ({ displayedCity, setDisplayedCity }: ModalProps) => {
   const handleOnClick = (city: string) => {
     if (!city) return;
     if (displayedCity.length >= 4) return;
+    if (displayedCity.find((c) => c === city)) return;
     setDisplayedCity([...displayedCity, city]);
   };
 
