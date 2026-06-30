@@ -63,8 +63,7 @@ const Modal = ({ displayedCity, setDisplayedCity }: ModalProps) => {
               <DialogHeader>
                 <DialogTitle>Select City</DialogTitle>
                 <DialogDescription>
-                  Make changes to your profile here. Click save when you&apos;re
-                  done.
+                  Select the city which you want to see the time.
                 </DialogDescription>
               </DialogHeader>
               <FieldGroup>
