@@ -35,12 +35,12 @@ const TimeSlider = ({ value, onChange, displayedCity }: TimeSliderProps) => {
             ${
               isMobile
                 ? "fixed bottom-50 left-[8%] -translate-x-1/2 w-15 max-w-md z-30 flex flex-col items-center"
-                : "absolute bottom-[40%] left-[25%] w-[50%] z-30 flex flex-col items-center"
+                : "fixed bottom-[40%] left-[25%] w-[50%] z-30 flex flex-col items-center"
             }
-            ${displayedCity.length === 1 ? "md:bottom-[15%] xl:bottom-40" : ""}
-            ${displayedCity.length === 2 ? "md:bottom-[15%] lg:bottom-[0.5%] xl:bottom-40" : ""}
-            ${displayedCity.length === 3 ? "md:bottom-[1.5%] lg:bottom-[0.5%] xl:bottom-40" : ""}
-            ${displayedCity.length === 4 ? "md:bottom-[1.5%] lg:bottom-[0.2%] xl:bottom-[0.5%]" : ""}
+            ${displayedCity.length === 1 ? "md:bottom-[15%] xl:bottom-[10%]" : ""}
+            ${displayedCity.length === 2 ? "md:bottom-[15%] lg:bottom-[0.5%] xl:bottom-[10%]" : ""}
+            ${displayedCity.length === 3 ? "md:bottom-[1.5%] lg:bottom-[0.5%] xl:bottom-[10%]" : ""}
+            ${displayedCity.length === 4 ? "md:bottom-[1.5%] lg:bottom-[0.2%] xl:bottom-20 2xl:bottom-[0.5%] " : ""}
             `}
       >
         <SliderPrimitive.Root
