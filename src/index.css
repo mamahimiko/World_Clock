@@ -1,0 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Spinnaker&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Spinnaker", sans-serif;
+}

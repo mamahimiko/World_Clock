@@ -15,7 +15,7 @@ const Clock = ({ clockArm, displayedCity }: clockProps) => {
         `}
       >
         <div
-          className="absolute origin-bottom w-4 h-20 lg:w-4 lg:h-25 bg-blue-200 top-[calc(50%-80px)] left-[calc(50%-8px)] lg:top-[calc(50%-100px)] lg:left-[calc(50%-8px)] drop-shadow-sm"
+          className="absolute origin-bottom w-4 h-20 lg:w-3 lg:h-25 bg-blue-200 top-[calc(50%-80px)] left-[calc(50%-8px)] lg:top-[calc(50%-100px)] lg:left-[calc(50%-8px)] drop-shadow-sm"
           style={{ transform: `rotate(${clockArm[0]}deg)` }}
         ></div>
         <div

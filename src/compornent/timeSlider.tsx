@@ -34,7 +34,7 @@ const TimeSlider = ({ value, onChange, displayedCity }: TimeSliderProps) => {
         className={`
             ${
               isMobile
-                ? "fixed bottom-50 left-[8%] -translate-x-1/2 w-[92%] max-w-md z-30 flex flex-col items-center"
+                ? "fixed bottom-50 left-[8%] -translate-x-1/2 w-15 max-w-md z-30 flex flex-col items-center"
                 : "absolute bottom-[40%] left-[25%] w-[50%] z-30 flex flex-col items-center"
             }
             ${displayedCity.length === 1 ? "md:bottom-[15%] xl:bottom-40" : ""}
